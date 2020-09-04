@@ -1,11 +1,7 @@
-# Programming language
-
-## Java 1.8
-
-## Usage 
+## First step
    
    javac Base.java
 
 ### Example:   
    
-   java Base 2 10101
+   java Base 2 10101 
