@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project name="proyecto02" default="proyecto02.jar" basedir="." >
+
+  <property name="build.dir" value="build" />
+  <property name="src.dir"   value="src" />
+  <property name="lib.dir"   value="lib" />
+  <property name="doc.dir"   value="doc" />
+
+  <target name="proyecto02.jar" depends="compile.proyecto02">
+    <jar jarfile="proyecto02.jar">
+      <zipfileset dir="${build.dir}" prefix="" />
+      <manifest>
+        <attribute name="Main-Class" value="proyecto02.Proyecto02"/>
+	<attribute name="Class-Path" value="lib/sqlite-jdbc-3.8.5-pre1.jar"/>	
+      </manifest>
+    </jar>
+  </target>
+
+  <target name="compile.proyecto02">
+    <mkdir dir="${build.dir}"/>
+    <javac srcdir="${src.dir}"
+      destdir="${build.dir}"
+      debug="true"
+      debuglevel="lines,vars,source"
+      includeantruntime="false"
+      deprecation="true"
+      nowarn="off">
+      <classpath>
+	<fileset dir="${lib.dir}">
+	  <include name="*.jar"/>
+	</fileset>
+      </classpath>
+      <compilerarg value="-Xlint:unchecked"/>
+    </javac>
+  </target>
+
+  <target name="doc" depends="proyecto02.jar">
+    <mkdir dir="${doc.dir}"/>
+    <javadoc packagenames="*"
+             sourcepath="src"
+             defaultexcludes="yes"
+             destdir="${doc.dir}"
+             author="false"
+             version="false"
+             use="true"
+             windowtitle="Proyecto02">
+      <doctitle><![CDATA[<h1>Proyecto 02</h1>]]></doctitle>
+      <link href="http://docs.oracle.com/javase/7/docs/api/" />
+      <classpath>
+	<pathelement location="${lib.dir}/junit.jar" />
+	<pathelement location="${lib.dir}/hamcrest-core.jar" />
+	<pathelement location="${lib.dir}/sqlite-jdbc-3.8.5-pre1.jar"/>
+      </classpath>
+    </javadoc>
+  </target>
+
+  <target name="clean">
+    <delete file="proyecto02.jar"/>
+    <delete dir="${build.dir}"/>
+    <delete dir="${doc.dir}"/>
+  </target>
+
+  <target name="test" depends="proyecto02.jar">
+    <junit printsummary="yes" haltonfailure="no">
+      <formatter type="plain" usefile="false" />
+      <classpath>
+	<pathelement path="${build.dir}" />
+	<pathelement location="${lib.dir}/junit.jar" />
+	<pathelement location="${lib.dir}/hamcrest-core.jar" />
+	<pathelement location="${lib.dir}/sqlite-jdbc-3.8.5-pre1.jar"/>
+      </classpath>
+      <batchtest fork="yes">
+        <fileset dir="${src.dir}">
+          <include name="**/*Test*.java" />
+        </fileset>
+      </batchtest>
+    </junit>
+  </target>
+
+</project>
