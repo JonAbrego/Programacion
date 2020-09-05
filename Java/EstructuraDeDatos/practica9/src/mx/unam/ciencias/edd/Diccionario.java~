@@ -1,0 +1,175 @@
+package mx.unam.ciencias.edd;
+
+import java.util.NoSuchElementException;
+
+/**
+ * Clase para diccionarios (<em>hash tables</em>). Un diccionario
+ * generaliza el concepto de arreglo, permitiendo (en general,
+ * dependiendo de qué tan buena sea su método para generar huellas
+ * digitales) agregar, eliminar, y buscar elementos en <i>O</i>(1)
+ * en cada uno de estos casos.
+ */
+public class Diccionario<K, V> {
+
+    /* Tamaño mínimo; decidido arbitrariamente a 2^6. */
+    private static final int MIN_N = 64;
+
+    /* Máscara para no usar módulo. */
+    private int mascara;
+    /* Huella digital. */
+    private HuellaDigital<K> huella;
+    /* Nuestro diccionario. */
+    private Lista<Entrada<K, V>>[] entradas;
+    /* Número de elementos*/
+    private int numeroDeElementos;
+
+    /* Clase para las entradas del diccionario. */
+    private class Entrada<K, V> {
+        public K llave;
+        public V valor;
+        public Entrada(K llave, V valor) {
+            this.llave = llave;
+            this.valor = valor;
+        }
+    }
+
+    /* Truco para crear un arreglo genérico. Es necesario hacerlo
+       así por cómo Java implementa sus genéricos; de otra forma
+       obtenemos advertencias del compilador. */
+    @SuppressWarnings("unchecked") private Lista<Entrada<K, V>>[] nuevoArreglo(int n) {
+        Lista[] arreglo = new Lista[n];
+        return (Lista<Entrada<K, V>>[])arreglo;
+    }
+
+    /**
+     * Construye un diccionario con un tamaño inicial y huella
+     * digital predeterminados.
+     */
+    public Diccionario() {
+        // Aquí va su código.
+    }
+
+    /**
+     * Construye un diccionario con un tamaño inicial definido por
+     * el usuario, y una huella digital predeterminada.
+     * @param tam el tamaño a utilizar.
+     */
+    public Diccionario(int tam) {
+        // Aquí va su código.
+    }
+
+    /**
+     * Construye un diccionario con un tamaño inicial
+     * predeterminado, y una huella digital definida por el usuario.
+     * @param huella la huella digital a utilizar.
+     */
+    public Diccionario(HuellaDigital<K> huella) {
+        // Aquí va su código.
+    }
+
+    /**
+     * Construye un diccionario con un tamaño inicial, y un método
+     * de huella digital definidos por el usuario.
+     * @param tam el tamaño del diccionario.
+     * @param huella la huella digital a utilizar.
+     */
+    public Diccionario(int tam, HuellaDigital<K> huella) {
+        // Aquí va su código.
+    }
+
+    /**
+     * Agrega un nuevo elemento al diccionario, usando la llave
+     * proporcionada. Si la llave ya había sido utilizada antes para
+     * agregar un elemento, el diccionario reemplaza ese elemento
+     * con el recibido aquí.
+     * @param llave la llave para agregar el elemento.
+     * @param valor el elemento a agregar.
+     */
+    public void agrega(K llave, V valor) {
+        // Aquí va su código.
+    }
+
+    /**
+     * Regresa un elemento del diccionario, usando la llave
+     * proporcionada. Si la llave no se encuentra en el diccionario,
+     * se lanza una excepción.
+     * @param llave la llave para buscar el elemento.
+     * @return el elemento correspondiente a la llave.
+     * @throws <tt>NoSuchElementException</tt> si la llave no está
+     *         en el diccionario.
+     */
+    public V get(K llave) {
+        // Aquí va su código.
+    }
+
+    /**
+     * Nos dice si una llave se encuentra en el diccionario.
+     * @param llave la llave que queremos ver si está en el diccionario.
+     * @return <tt>true</tt> si la llave está en el diccionario,
+     *         <tt>false</tt> en otro caso.
+     */
+    public boolean contiene(K llave) {
+        // Aquí va su código.
+    }
+
+    /**
+     * Elimina un elemento del diccionario, usando la llave
+     * proporcionada.
+     * @param llave la llave para buscar el elemento a eliminar.
+     * @throws NoSuchElementException si la llave no se encuentra en
+     *         el diccionario.
+     */
+    public void elimina(K llave) {
+        // Aquí va su código.
+    }
+
+    /**
+     * Regresa una lista con todas las llaves con elementos
+     * asociados en el diccionario.
+     * @return una lista con todas las llaves.
+     */
+    public Lista<K> llaves() {
+        // Aquí va su código.
+    }
+
+    /**
+     * Regresa una lista con todos los elementos en el diccionario.
+     * @return una lista con todos los elementos.
+     */
+    public Lista<V> elementos() {
+        // Aquí va su código.
+    }
+
+    /**
+     * Nos dice el máximo número de colisiones para una misma llave
+     * que tenemos en el diccionario.
+     * @return el máximo número de colisiones para una misma llave.
+     */
+    public int colisionMaxima() {
+        // Aquí va su código.
+    }
+
+    /**
+     * Nos dice cuántas colisiones hay en el diccionario.
+     * @return cuántas colisiones hay en el diccionario.
+     */
+    public int colisiones() {
+        // Aquí va su código.
+    }
+
+    /**
+     * Nos dice la carga del diccionario.
+     * @return la carga del diccionario.
+     */
+    public double carga() {
+        // Aquí va su código.
+    }
+
+    /**
+     * Regresa el número de elementos en el diccionario.
+     * @return el número de elementos en el diccionario.
+     */
+    public int getNumeroDeElementos() {
+        // Aquí va su código.
+    }
+}

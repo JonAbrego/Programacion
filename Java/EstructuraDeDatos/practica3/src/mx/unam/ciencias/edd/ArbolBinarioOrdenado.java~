@@ -1,0 +1,95 @@
+package mx.unam.ciencias.edd;
+
+/**
+ * <p>Clase para árboles binarios ordenados. Los árboles son
+ * genéricos, pero acotados a la interfaz {@link Comparable}.</p>
+ *
+ * <p>Un árbol instancia de esta clase siempre cumple que:</p>
+ * <ul>
+ *   <li>Cualquier elemento en el árbol es mayor o igual que todos
+ *       sus descendientes por la izquierda.</li>
+ *   <li>Cualquier elemento en el árbol es menor o igual que todos
+ *       sus descendientes por la derecha.</li>
+ * </ul>
+ */
+public class ArbolBinarioOrdenado<T extends Comparable<T>>
+    extends ArbolBinario<T> {
+
+    /**
+     * Constructor sin parámetros. Sencillamente ejecuta el
+     * constructor sin parámetros de {@link ArbolBinario}.
+     */
+    public ArbolBinarioOrdenado() { super(); }
+    
+    /**
+     * Construye un árbol binario ordenado a partir de un árbol
+     * binario. El árbol binario ordenado tiene los mismos elementos
+     * que el árbol recibido, pero ordenados.
+     * @param arbol el árbol binario a partir del cuál creamos el
+     *        árbol binario ordenado.
+     */
+    public ArbolBinarioOrdenado(ArbolBinario<T> arbol) {
+	Cola<Nodo<T>> cola = new Cola<Nodo<T>>();
+        cola.mete(arbol.raiz);
+        while (!cola.esVacia()){
+	    Nodo<T> n = cola.saca();
+	    agrega(n.elemento);
+	    if (n.izquierdo != null)
+		cola.mete(n.izquierdo);
+	    if (n.derecho != null)
+		cola.mete(n.derecho);
+        }
+    }
+      
+    
+    /**
+     * Agrega un nuevo elemento al árbol. El árbol conserva su orden
+     * in-order.
+     * @param elemento el elemento a agregar.
+     * @return un iterador que apunta al nodo del nuevo elemento.
+     */
+    @Override public IteradorArbolBinario<T> agrega(T elemento) {
+	return null;
+    }
+    
+    /**
+     * Elimina un elemento. Si el elemento no está en el árbol, no
+     * hace nada; si está varias veces, elimina el primero que
+     * encuentre (in-order). El árbol conserva su orden in-order.
+     * @param elemento el elemento a eliminar.
+     */
+    @Override public void elimina(T elemento) {
+	
+        // Aquí va su código.
+    }
+
+    /**
+     * Busca un elemento en el árbol recorriéndolo in-order. Si lo
+     * encuentra, regresa un iterador que apunta a dicho elemento;
+     * si no, regresa <tt>null</tt>.
+     * @param elemento el elemento a buscar.
+     * @return un iterador que apunta al elemento buscado si lo
+     *         encuentra; <tt>null</tt> en otro caso.
+     */
+    @Override public IteradorArbolBinario<T> busca(T elemento) {
+	return busca(raiz,elemento);
+    }
+    
+    private IteradorArbolBinario<T> busca(Nodo<T> it, T elem){
+	if(it==null || it.elemento.compareTo(elem)==0)
+	    return iterador(it);
+	if(it.elemento.compareTo(elem) <= 0)
+	    return busca(it.izquierdo,elem);
+	return busca(it.derecho,elem);
+    }
+
+    /**
+     * Regresa el nodo anterior (en in-order) al nodo que recibe.
+     * @param nodo el nodo del que queremos encontrar el anterior.
+     * @return el nodo anterior (en in-order) al nodo que recibe.
+     */
+    protected Nodo<T> buscaNodoAnterior(Nodo<T> nodo) {
+	return nodo.padre;
+	// Aquí va su código.
+    }
+}

@@ -1,0 +1,35 @@
+package mx.unam.ciencias.edd;
+
+/**
+ * Clase para pilas genéricas.
+ */
+public class Pila<T> extends MeteSaca<T> {
+
+    /**
+     * Construye una pila vacía.
+     */
+    public Pila() {
+        super();
+    }
+
+    /**
+     * Elimina el elemento en el tope de la pila y lo regresa.
+     * @return el elemento en el tope de la pila.
+     */
+    @Override public T saca() {
+	if(!esVacia())
+	    
+	return lista.getUltimo();    
+
+	// Aquí va su código.
+    }
+
+    /**
+     * Nos permite ver el elemento en el tope de la pila, sin
+     * sacarlo de la misma.
+     */
+    @Override public T mira() {
+	T elem=lista.getUltimo();
+        return elem;// Aquí va su código.
+    }
+}

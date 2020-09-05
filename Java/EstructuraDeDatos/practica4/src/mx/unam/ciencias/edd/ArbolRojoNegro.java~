@@ -1,0 +1,238 @@
+package mx.unam.ciencias.edd;
+
+/**
+ * Clase para árboles rojo-negros. Un árbol rojo-negro cumple las
+ * siguientes propiedades:
+ *
+ * <ol>
+ *  <li>Todos los nodos son NEGROS o ROJOS.</li>
+ *  <li>La raíz es NEGRA.</li>
+ *  <li>Todas las hojas (<tt>null</tt>) son NEGRAS (al igual que la
+ *      raíz).
+ *  <li>Un nodo ROJO siempre tiene dos hijos NEGROS.</li>
+ *  <li>Todo camino de un nodo a alguno de sus descendientes tiene
+ *      el mismo número de nodos NEGROS.</li>
+ * </ol>
+ *
+ * Los árboles rojo-negros son autobalanceados, y por lo tanto las
+ * operaciones de inserción, eliminación y búsqueda pueden
+ * realizarse en <i>O</i>(log <i>n</i>).
+ */
+public class ArbolRojoNegro<T extends Comparable<T>>
+    extends ArbolBinarioOrdenado<T> {
+
+    /**
+     * Agrega un nuevo elemento al árbol. El método invoca al método
+     * {@link ArbolBinarioOrdenado#agrega}, y después balancea el
+     * árbol recoloreando nodos y girando el árbol como sea
+     * necesario.
+     * @param elemento el elemento a agregar.
+     * @return un iterador que apunta al nodo del nuevo elemento.
+     */
+    @Override public IteradorArbolBinario<T> agrega(T elemento) {
+	ArbolBinarioOrdenado<T> nvo=new ArbolBinarioOrdenado<T>();
+	Nodo<T> nodo=new Nodo<T>(elemento);
+	nodo.color=Color.ROJO;
+	nvo.agrega(elemento);
+	numeroDeElementos++;
+	rebalanceaAgrega(nodo);
+	return iterador(nodo);
+	// Aquí va su código.
+    }
+    
+    private void rebalanceaAgrega(Nodo<T> nodo){
+	if(nodo.padre==null){
+	    raiz=nodo;
+	    raiz.color=Color.NEGRO;
+	    return ;
+	}
+	if(nodo.padre.color == Color.NEGRO){
+	    return ;
+	}
+	if(tio(nodo).color==Color.ROJO && nodo.padre.padre.color==Color.NEGRO){
+	    tio(nodo).color=Color.NEGRO;
+	    nodo.padre.color=Color.NEGRO;
+	    nodo.padre.padre.color=Color.ROJO;
+	    rebalanceaAgrega(nodo.padre.padre);
+	    return;
+	}
+	if(esHijoDerecho(nodo.padre))
+	    if(esHijoIzquierdo(nodo)){
+		giraDerecha(iterador(nodo.padre));
+		return;
+	    }
+	if(esHijoIzquierdo(nodo.padre))
+	    if(esHijoDerecho(nodo)){
+		giraIzquierda(iterador(nodo.padre));
+		return ;
+	    }
+	if(esHijoDerecho(nodo.padre) && esHijoDerecho(nodo) && nodo.padre.color==Color.ROJO && nodo.color==Color.ROJO){
+	    nodo.padre.color=Color.NEGRO;
+	    nodo.padre.padre.color=Color.ROJO;
+	    giraIzquierda(nodo.padre.padre);
+	    return;
+	    }
+	if(esHijoIzquierdo(nodo.padre) && esHijoIzquierdo(nodo) && nodo.padre.color==Color.ROJO && nodo.color==Color.ROJO){
+	    nodo.padre.color=Color.NEGRO;
+	    nodo.padre.padre.color=Color.ROJO;
+	    giraDerecha(nodo.padre.padre);
+	    return;
+	}
+    }
+    
+    private boolean esHijoDerecho(Nodo<T> nodo){
+	Nodo<T> aux=nodo.padre;
+	if(aux != null)
+	    if(aux.derecho == nodo)  
+		return true;
+	return false;
+    }
+    
+    private boolean esHijoIzquierdo(Nodo<T> nodo){
+	Nodo<T> aux=nodo.padre;
+	if(aux != null)
+	    if(aux.izquierdo ==nodo)
+		return true;
+	return false;
+    }  
+    
+    private Nodo<T> tio(Nodo<T> nodo){
+	Nodo<T> aux=nodo.padre;
+	if(aux != null){
+	    if(aux.padre != null){
+		if(aux == aux.padre.izquierdo)
+		    return aux.padre.derecho;
+		return aux.padre.izquierdo;
+	    }
+	}
+	return null;
+    }
+    
+    private Nodo<T> hermano(Nodo<T> nodo){
+	Nodo<T> aux=nodo.padre;
+	if(aux != null){
+	    if(esHijoDerecho(nodo) && aux.izquierdo != null)
+		return aux.izquierdo;
+	    if(esHijoIzquierdo(nodo) && aux.derecho != null)
+		return aux.derecho;
+	}
+	return null;
+    }
+   
+    /**
+     * Elimina un elemento del árbol. El método elimina el nodo que
+     * contiene el elemento, y recolorea y gira el árbol como sea
+     * necesario para rebalancearlo. La complejidad del método es
+     * <i>O</i>(log <i>n</i>) siempre.
+     * @param elemento el elemento a eliminar del árbol.
+     */
+    @Override public void elimina(T elemento) {
+	if(busca(elemento) == null) return; //Paso1
+	Nodo<T> c =nodoDeIterador(busca(elemento)); //Nodo a borrar
+	Nodo<T> fantasma=new Nodo<T>(null); //Nodo Fantasma 
+	Nodo<T> n; //Nodo Auxiliar
+	numeroDeElementos--; //Decremento el número de elementos en el arbol 
+	if(c.equals(raiz)){ //Paso2 
+	    raiz=null;      //Paso2 
+	    return;         //Paso2
+	}
+	Nodo<T> m=buscaNodoAnterior(c); // Nodo anterior de c
+	if(m == null)     // Si m(anterior de c) es null
+	    n=c;          // Nodo aux va ser igual a c(que es el nodo a eliminar)
+	else n=m;         // Si m no es null entonces hacemos al aux(n) igual a m(anterior)
+	if(n != c)        //Paso3 si n(aux) es distinto de c(nodo) 
+	    intercambia(n,c); // intercambiamos los elementos
+	Nodo<T> h;        // Nodo que sera el único hijo de N
+	if(n==m)          // Si n es igual a m, si hubo anterior entonces solo puede tener hijo izquierdo
+	    h=n.izquierdo; // h es igual al hijo izquierdo de n
+	else h=n.derecho;  // Si n no es igua,i.e que no hubo anterior entonces solo va existir hijo derecho
+	if(h== null){      // Si no tiene hijo alguno se lo asignamos a huevo
+	    intercambia(h,fantasma);
+	    h=fantasma;	    // h sera el nodo fantasma hijo de N
+	    h.padre=n;      // el padre de h es n
+	}
+	if(n.padre == null) 
+	    raiz=h;
+	if(n.color==Color.NEGRO && h.color==Color.ROJO){
+	    h.color=Color.NEGRO;
+	    return;
+	}
+	if(n.color==Color.NEGRO && h.color==Color.NEGRO){
+	    rebalanceaElimina(h);
+	    if(fantasma.padre != null){
+		if(esHijoIzquierdo(fantasma)){
+		    fantasma=null;
+		    fantasma.padre.izquierdo=null;
+		}
+		if(esHijoDerecho(fantasma)){
+		    fantasma=null;
+		    fantasma.padre.derecho=null;
+		}
+	    }
+	}
+	// Aquí va su código.
+    }
+    
+    private void intercambia(Nodo<T> n,Nodo<T> ant){
+	T aux = n.elemento;
+	n.elemento = ant.elemento;
+	ant.elemento = aux;
+    }
+
+    private void rebalanceaElimina(Nodo<T> nodo){
+	if(nodo.padre == null){  //Caso1
+	    return;             //Caso1  
+	}
+	if(hermano(nodo).color == Color.ROJO){ //Caso2
+	    nodo.padre.color=Color.ROJO;       //Caso2 
+	    hermano(nodo).color=Color.NEGRO;   //Caso2
+	    if(esHijoDerecho(nodo))            //Caso2
+		giraDerecha(nodo.padre);       //Caso2
+	    giraIzquierda(nodo.padre);         //Caso2
+	}
+	if(nodo.padre !=null && hermano(nodo)!=null)                     //Caso3                                      
+	    if(nodo.color==Color.NEGRO &&  nodo.padre.color==Color.NEGRO //Caso3
+	       && hermano(nodo).color==Color.NEGRO){                     //Caso3
+		hermano(nodo).color=Color.ROJO;                          //Caso3
+		rebalanceaElimina(nodo.padre);                           //Caso3
+	    }
+	if(hermano(nodo).color==Color.NEGRO)                                                            //Caso4
+	    if(hermano(nodo).izquierdo.color==Color.NEGRO && hermano(nodo).derecho.color==Color.NEGRO)  //Caso4
+		if(nodo.padre.color==Color.ROJO){                                                       //Caso4
+		nodo.padre.color=Color.NEGRO;                                                           //Caso4 
+		hermano(nodo).color=Color.ROJO;                                                         //Caso4 
+		return;                                                                                 //Caso4
+	    }
+	if(hermano(nodo).color == Color.NEGRO){                                                            //Caso5
+	    if(hermano(nodo).izquierdo.color == Color.NEGRO && hermano(nodo).derecho.color== Color.ROJO){  //Caso5
+		hermano(nodo).derecho.color=Color.NEGRO;                                                   //Caso5
+		giraDerecha(hermano(nodo));                                                                //Caso5
+	    }                                                                                              //Caso5
+	    if(hermano(nodo).izquierdo.color == Color.ROJO && hermano(nodo).derecho.color== Color.NEGRO){  //Caso5
+		hermano(nodo).izquierdo.color=Color.NEGRO;                                                 //Caso5
+		giraIzquierda(hermano(nodo));                                                              //Caso5
+	    }                                                                                              //Caso5
+	    hermano(nodo).color=Color.ROJO;                                                                //Caso5
+ 	}                                                                                                  //Caso5
+	hermano(nodo).color=nodo.padre.color;                      //Caso6
+	nodo.padre.color=Color.NEGRO;                              //Caso6 
+	if(hermano(nodo).izquierdo.color==Color.ROJO)              //Caso6
+	    hermano(nodo).izquierdo.color=Color.NEGRO;             //Caso6
+	if(hermano(nodo).derecho.color==Color.ROJO)                //Caso6
+	    hermano(nodo).derecho.color=Color.NEGRO;               //Caso6
+	if(esHijoDerecho(nodo))                                    //Caso6
+	    giraDerecha(nodo.padre);                               //Caso6
+	giraIzquierda(nodo.padre);                                 //Caso6
+	
+    }
+	
+	/**
+	 * Regresa el color del nodo al que un iterador apunta.
+	 * @param iterador el iterador del que queremos saber el color
+     *                 de su nodo.
+     * @return el color del nodo al que un iterador apunta.
+     */
+    public Color colorDeIterador(IteradorArbolBinario<T> iterador) {
+        return null;// Aquí va su código.
+    }
+}

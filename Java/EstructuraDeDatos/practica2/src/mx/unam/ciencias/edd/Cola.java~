@@ -1,0 +1,36 @@
+package mx.unam.ciencias.edd;
+
+/**
+ * Clase para colas genéricas.
+ */
+public class Cola<T> extends MeteSaca<T> {
+
+    /**
+     * Construye una cola vacía.
+     */
+    public Cola() {
+        super();
+    }
+
+    /**
+     * Elimina el elemento al frente de la cola y lo regresa.
+     * @return el elemento al frente de la cola.
+     */
+    @Override public T saca() {	
+	T elem=lista.get(0);
+	lista.eliminaPrimero();
+	  return elem;// Aquí va su código.
+    }
+
+    /**
+     * Nos permite ver el elemento al inicio de la cola, sin sacarlo
+     * de la misma.
+     */
+    @Override public T mira() {
+	if(lista.getLongitud() > 0){
+	    T elem=lista.get(0);
+	    return elem;// Aquí va su código.
+	}
+	return null;
+    }
+}
