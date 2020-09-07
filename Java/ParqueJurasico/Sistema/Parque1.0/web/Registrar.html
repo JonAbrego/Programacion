@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Registro</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <link rel="stylesheet" href="css/estilo.css" type="text/css">
+    </head>
+    <body>
+        <div id="agrupar">
+            <header id="cabecera">
+                <h1> Registro Nuevo</h1>
+            </header>
+            <nav>
+                <ul>
+                   <li class="nivel1"><a href="index.html" class="nivel1">Cancelar</a></li>
+                </ul>
+            </nav>
+            <section id="principal">
+            <form  id="formAlumno" action="beanRegistrar.jsp" method="post">
+                    <table  id="formRegistro">
+                        <tr>
+                            <td><label for="clave">Clave: </label></td>
+                            <td><input type="text" name="clave" placeholder="Escribe clave" maxlength="10" required autofocus></td>
+                        </tr>
+                        <tr>
+                            <td><label for="nombre">Nombre: </label></td>
+                            <td><input type="text"  name="nombre" placeholder="Escribe nombre" required autofocus></td>
+                        </tr>
+                        <tr>
+                            <td><label for="entidad">Entidad: </label></td>
+                            <td><input type="text" name="entidad" placeholder="Escribe entidad" required autofocus></td>
+                        </tr>
+                        <tr>
+                            <td><label for="localidad">Localidad: </label></td>
+                            <td><input type="text" name="localidad" placeholder="Escribe localidad" required autofocus></td>
+                        </tr>
+                        <tr>
+                            <td><label for="calle">Calle: </label></td>
+                            <td><input type="text"  name="calle" placeholder="Escribe calle"  required autofocus></td>
+                        </tr>
+                        <tr>
+                            <td><label for="numero">Numero: </label></td>
+                            <td><input type="text" name="numero" placeholder="Escribe número"  required autofocus></td>
+                        </tr>
+                        <tr>
+                            <td><label for="grado">Grado </label></td>
+                            <td>
+                                <select name="grado">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                    <option>6</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                        <td><label for="hora">Hora </label></td>
+                            <td>
+                                <select NAME="hora">
+                                    <option>07:00</option>
+                                    <option>08:00</option>
+                                    <option>09:00</option>
+                                    <option>10:00</option>
+                                    <option>11:00</option>
+                                    <option>12:00</option>
+                                    <option>13:00</option>
+                                    <option>14:00</option>
+                                    <option>15:00</option>
+                                    <option>16:00</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label for="tipoVis">Tipo Visita </label></td>
+                            <td>
+                                <select name="tipoVisita">
+                                    <option>solo visita</option>
+                                    <option>vista con experto propio</option>
+                                    <option>vista con guia del parque</option>
+                                    <option>visita con guia computarizado</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label for="fecha">Fecha </label></td>
+                            <td><input type="text" name="fecha" placeholder="aaaa/mm/dd" required autofocus></td>
+                        </tr>
+                        <tr>
+                            <td></td><td><input type=submit  value="Registrar"/></td>
+                        </tr>
+                    </table>
+                </form>
+            </section>
+        </div>
+    </body>
+</html>

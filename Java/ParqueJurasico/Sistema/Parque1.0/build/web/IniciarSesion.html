@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <link rel="stylesheet" href="css/estilo.css" type="text/css"/>
+        <title>Iniciar Sesión</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+    </head>
+    <body>
+    <div id="agrupar">
+            <header id="cabecera">
+                <h1>Iniciar Sesión</h1>
+            </header>
+            <nav id="menu">
+                <ul>
+                    <li class="nivel1"><a href="index.html" class="nivel1">Cancelar</a></li>
+                </ul>
+            </nav>
+            <section id="principal">
+                <form name="formAlumno" id="formAlumno" action="beanIniciar.jsp" method="post">
+                    <table name="formInicio" id="formRegistro">   
+                         <tr>
+                            <td><label for="usuario">Usuario:</label></td>
+                            <td><input type="text" id="usuario" name="usuario"  maxlength="10" required autofocus></td>
+                        </tr>
+                        <tr>
+                            <td><label for="cont">Contraseña:</label></td>
+                            <td><input type="password" name="cont" value="xxxxxxx"  maxlength="10" required autofocus></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <input type="submit" id="enviar" value="Ingresar"/>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </section>
+        </div>
+    </body>
+</html>
