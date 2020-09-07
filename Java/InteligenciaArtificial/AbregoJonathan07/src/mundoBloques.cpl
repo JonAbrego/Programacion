@@ -1,0 +1,66 @@
+;Indicamos los bloques que hay que despejar primero
+;y activamos un hecho auxiliar para ver que no hemos acabos
+
+(defrule start
+      (goal ?block1 on-top-of ?block2)
+=>
+      (assert (move ?block1))
+      (assert (move ?block2))
+      (assert (fin no))
+)
+
+;Indicamos que bloque deberemos despejar
+;para poder despejar a su vez el que queremos
+(defrule push
+      (move ?block)
+      (stack $? ?block ?encima ? $?)
+      (fin no)
+=>
+      (assert (move ?encima))
+)
+
+; Vemos que si del bloque que queremos despejar 
+; solo tenemos otro bloque, pues simplemente 
+; lo movemos a una nueva pila
+(defrule pop  
+      (move ?block)
+      ?stack <- (stack $?rest ?block ?block1)
+      (fin no)
+=>
+      (assert (stack $?rest ?block))
+      (assert (stack ?block1))
+      (retract ?stack)
+      (printout t "Movemos el block " ?block1 " a una nueva pila" crlf)
+)
+
+; Movemos los 2 bloques que estan hasta el tope de nuestra pila respectivamente
+(defrule finish
+      (goal ?block1 on-top-of ?block2)
+      ?stack1 <- (stack $?rest1 ?block1)
+      ?stack2 <- (stack $?rest2 ?block2)
+      (fin no)
+=>
+      (assert (stack $?rest1))
+      (assert (stack $?rest2 ?block2 ?block1))
+      (retract ?stack1)
+      (retract ?stack2)
+      (printout t "Movemos el block " ?block1 " on-top-of el block " ?block2 crlf)
+)
+
+;Si ya logramos nuestra meta indicamos que ya esta resuelto
+(defrule goal
+      (declare (salience 2000)) ;Para evitar que se cicle
+      (goal ?block1 on-top-of ?block2)
+      (stack $? ?block2 ?block1)
+      ?fin <- (fin no)
+=>
+      (printout t "Meta conseguida" crlf)
+      (retract ?fin)
+)
+
+(deffacts initial-state
+      (stack C B A)
+      (stack F E D)
+      (stack)
+      (goal C on-top-of E)
+)
