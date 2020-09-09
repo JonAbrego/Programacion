@@ -1,0 +1,236 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 21-abr-2014, 18:34:42
+    Author     : adriansoto
+*/
+
+* {
+    margin: 0px;
+    padding: 0px;
+}
+header, section, footer, aside, nav {
+    display: block;
+}
+body {
+    //text-align: center;
+    background-image: url(../IMG/background.jpg);
+}
+#agrupar {
+    width: 960px;
+    margin: 5px auto;
+    //text-align: left;
+}
+#cabecera {
+    background: #000000;
+    border: 2px solid #ffff00;
+    padding: 5px;
+}
+#principal {
+    background-image: url(../IMG/bgw.jpeg);
+    text-align: center;
+    border: 2px solid #ffff00;
+    padding: 10px;
+    min-height: 460px;
+}
+#principal h1 {
+    font: bold 20px verdana, sans-serif;
+}
+#exito {
+    font: bold 15px verdana, sans-serif;
+}
+#principal p{
+    font: bold 15px verdana, sans-serif;
+}
+#menu {
+
+}
+ul { 
+    list-style-type: none;
+}
+ul li.nivel1 { 
+    //float: left;
+    display: inline-block;
+    width: 237px;
+    //margin-right: 0px;
+}
+ul li a {
+    font: bold 12px verdana, sans-serif;
+    display: block;
+    text-decoration: none;
+    text-align: center;
+    color: #fff;
+    background-color: #333333;
+    //border: solid 1px #fff;
+    padding: 5px;
+    position: relative;
+}
+ul li:hover {
+    position: relative;
+}
+ul li a:hover, #menu ul li:hover a.nivel1 {
+    background-color: #888;
+    color: #000;
+    position: relative;
+}
+ul li a.nivel1 {
+    display: block!important;
+    display: none;
+    position: relative;
+}
+ul li ul {
+    display: none;
+}
+ul li a:hover ul, #menu ul li:hover ul {
+    display: block;
+    position: absolute;
+    left: 0px;
+}
+ul li ul li a {
+    width: 237px;
+    padding: 6px 0px 8px 0px;
+    border-top-color: #000;
+}
+ul li ul li a:hover {
+    border-top-color: #000;
+    position: relative;
+}
+#pie {
+    min-height: 30px;
+    background: black;
+    color: white;
+    font: bold 12px verdana, sans-serif;
+    clear: both;
+    text-align: center;
+    padding: 20px;
+    border: 2px solid #ffff00;
+}
+#follow {
+    
+    float: right;
+}
+#enunciado p {
+    font: bold 12px verdana, sans-serif;
+}
+#formRegistro, #datosProfesor, #datosAlumno, #formInicio {
+    margin: 10px auto;
+    font: bold 12px verdana, sans-serif;
+    width: 400px;
+    padding: 10px;
+    background-color: #ffff66;
+    -webkit-border-radius: 5px;
+    border: 2px solid #000000;
+}
+#formRegistro input, #formInicio input {
+    margin: 10px;
+    width: 200px;
+    height: 20px;
+    padding-left: 5px;
+    outline-color: #ffff00;
+    border: 1px solid #999999;
+    -webkit-border-radius: 4px;
+    -webkit-box-shadow: 3px 3px 4px #999999;
+    
+}
+#datosProfesor tr, #datosAlumno tr {
+    margin: 10px;
+    width: 200px;
+    height: 20px;
+    padding-left: 5px;
+    outline-color: #ffff00;
+    border: 1px solid #999999;
+}
+#datosCurso {
+    margin: 10px auto;
+    font: bold 12px verdana, sans-serif;
+    width: 400px;
+    padding: 10px;
+    background-color: #ffff66;
+    -webkit-border-radius: 5px;
+    border: 2px solid #000000;
+}
+#datosCurso td {
+    padding:5px;
+    border: 1px solid #000000;
+    
+}
+#datosCurso tr:first-child td:first-child {
+    -webkit-border-radius:5px 0px 0px 0px;
+}
+#datosCurso tr:first-child {
+    background-color: #000000;
+    color: #ffff00;
+}
+#datosCurso tr:first-child td:last-child {
+     -webkit-border-radius:0px 5px 0px 0px;
+}
+#datosCurso tr:last-child td:first-child {
+    -webkit-border-radius:0px 0px 0px 5px;
+}
+#datosCurso tr:last-child td:last-child {
+    -webkit-border-radius:0px 0px 5px 0px;
+}
+input[type=submit]#enviar {
+    padding:5px 15px;
+    background:#ccc;
+    border:0 none;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+.modalDialog {
+	position: fixed;
+	font-family: Arial, Helvetica, sans-serif;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background: rgba(0,0,0,0.8);
+	z-index: 99999;
+	opacity:0;
+	-webkit-transition: opacity 400ms ease-in;
+	-moz-transition: opacity 400ms ease-in;
+	transition: opacity 400ms ease-in;
+	pointer-events: none;
+}
+.modalDialog:target {
+	opacity:1;
+	pointer-events: auto;
+}
+
+.modalDialog > div {
+	width: 450px;
+	position: relative;
+	margin: 10% auto;
+	padding: 5px 20px 13px 20px;
+	border-radius: 10px;
+	background: #fff;
+	background: -moz-linear-gradient(#fff, #999);
+	background: -webkit-linear-gradient(#fff, #999);
+	background: -o-linear-gradient(#fff, #999);
+}
+.close {
+	background: #606061;
+	color: #000000;
+	line-height: 25px;
+	position: absolute;
+	right: -12px;
+	text-align: center;
+	top: -10px;
+	width: 24px;
+	text-decoration: none;
+	font-weight: bold;
+	-webkit-border-radius: 12px;
+	-moz-border-radius: 12px;
+	border-radius: 12px;
+	-moz-box-shadow: 1px 1px 3px #000;
+	-webkit-box-shadow: 1px 1px 3px #000;
+	box-shadow: 1px 1px 3px #000;
+}
+
+.close:hover {
+    background: #ffff00;
+}
