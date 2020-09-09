@@ -1,0 +1,140 @@
+
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="assets/jquery-mobile/jquery.mobile.structure-1.3.1.css" />
+        <link rel="stylesheet" href="css/font-awesome.css" />
+        <link rel="stylesheet" href="assets/flex-slider/flexslider.css" type="text/css">
+
+        <link rel="stylesheet" href="css/style.css" />
+        <!-- Fin Css -->
+
+        <!-- JQuery -->
+        <script src="js/jquery-1.9.1.min.js"></script>
+            <script>
+$(document).on('pagebeforeshow', function(){       
+    $('#headerLink').removeClass('ui-btn-left');
+    $('#navIcon').removeClass('ui-btn-right');
+    $('#navIcon').addClass('ui-btn-left');
+});
+</script>
+        <script src="js/jquery.mobile-1.3.0.min.js"></script>
+        <script src="assets/flex-slider/jquery.flexslider-min.js"></script>
+        <script src="js/main.js"></script>
+    
+        <!-- Fin JQuery -->
+        <title>Index</title>
+
+    </head>
+    <body>
+
+        <!-- Página -->
+        <div data-role="page" >
+
+            <!-- Panel de Navegación -->
+             <div data-role="panel" id="left-panel" data-theme="c">
+
+                <!-- -->
+                <!-- Menú otras secciones -->
+                <ul data-role="listview" data-theme="d">
+                    <li data-icon="delete"><a href="#" data-rel="close">Close</a></li>
+                    <li data-role="list-divider">Menu</li>
+                    <li><a href="#">Bolsa de Trabajo</a></li>
+                    <li><a href="#">Bandas</a></li>
+                    <li><a href="#">Food Truck</a></li>
+                </ul>
+                <!-- Fin menú otras secciones -->
+
+                <!-- Sub-menú de Programas Sociales -->
+                <div data-role="collapsible" data-inset="false" data-iconpos="right" data-theme="d" data-content-theme="d">
+
+                    <!-- titulo -->
+                    <h3>Programas Sociales</h3>
+
+                    <!-- Sub-menú tipo acordeón -->
+                    <div data-role="collapsible-set" data-inset="false" data-iconpos="right" data-theme="b" data-content-theme="d">
+
+                        <div data-role="collapsible" data-inset="false" data-iconpos="right" data-theme="d" data-content-theme="d">
+                            <h2>Becas</h2>
+
+                            <div data-role="collapsible-set" data-inset="false" data-iconpos="right" data-theme="b" data-content-theme="d">
+                                <ul data-role="listview">
+                                    <li><a rel="external" href="http://www.ciudadjoven.mx/becasExtranjero.html">Extranjero</a></li>
+                                    <li><a href="#">Alimenticia</a></li>
+                                    <li><a href="#">Economica</a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div data-role="collapsible" data-inset="false" data-iconpos="right" data-theme="d" data-content-theme="d">
+                            <h2>Descuentos</h2>
+
+                            <div data-role="collapsible-set" data-inset="false" data-iconpos="right" data-theme="b" data-content-theme="d">
+                                <ul data-role="listview">
+                                    <li><a href="#">General</a></li>
+                                    <li><a href="#">Estudiantil</a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                            <!-- Categorias -->
+                            <ul data-role="listview">
+                                <li><a rel="external" href="http://www.ciudadjoven.mx/becasExtranjero.html">Seguros</a></li>
+                                <li><a href="#">Cursos</a></li>
+                                <li><a href="#">Préstamos</a></li>
+                            </ul>
+
+                    </div>
+                    <!-- Fin sub-menú tipo acordeón -->
+
+                </div>
+                <!-- Fin sub-menú -->
+
+            </div>
+            <!-- Fin Panel de Navegación -->
+            <!-- Header -->
+            <div data-role="header" class="jqm-header">
+                <a href="http://www.ciudadjoven.mx" id="headerLink" data-role="none" >Ciudad Joven</a>
+              <a href="#left-panel" id="navIcon"><i  class="icon-th-list grande"></i></a>
+            </div>
+            <!-- Fin Header -->
+            <!-- Content Start -->
+            <div data-role="content">
+                <!--Site Slogan  -->                
+                <div class="ui-grid-solo">
+                    <div  class="logo">
+                        <img src="img/Mobile_tech.jpg"/>
+                    </div>
+                    <a href="http://www.ciudadjoven.mx/inicio_sesion.html" rel="external" data-role="button" class="btn swatch-2">Inicia Sesión</a>
+                    <a href="http://www.ciudadjoven.mx/registro.html" rel="external" data-role="button" class="btn swatch-2">Registrate</a>
+                </div>
+                <!-- Slogan End -->
+            </div>
+
+        </div>
+        <!-- Fin de la Página -->
+    </body>
+</html>
