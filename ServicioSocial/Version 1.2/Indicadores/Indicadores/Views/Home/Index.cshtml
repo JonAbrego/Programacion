@@ -1,0 +1,359 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Dark Admin</title>
+    
+    <link rel="stylesheet" type="text/css" href="~/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="~/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="~/css/local1.css" />
+ 
+
+    <script type="text/javascript" src="~/js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="~/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="~/js/calendario.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+    <link rel="stylesheet" href="~/css/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+  
+    </script>   
+</head>
+<body>
+    <div id="wrapper">
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">SENER</a>
+            </div>
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav side-nav">
+                    <li class="selected"><a href="#"><i class="fa fa-bullseye"></i> Encuestas</a></li>
+                    <li><a href="@Url.Action("Plazos", "Home")"><i class="fa fa-tasks"></i> PlazosSLA</a></li>
+                    <li><a href="@Url.Action("Tiempo", "Home")"><i class="fa fa-globe"></i> Tiempo / Incidentes</a></li>
+                    <li><a href="@Url.Action("Criticos", "Home")"><i class="fa fa-list-ol"></i> Criticos</a></li>
+                    <li><a href="@Url.Action("Media", "Home")"><i class="fa fa-font"></i> Media</a></li>
+                </ul>               
+            </div>
+        </nav>
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="page-header">
+                        <h1 id="navs">Encuestas</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div id="nav-tabs" class="col-lg-12">
+                        <form action=@Url.Action("Index", "Home") method="POST">
+                            Desde: @Html.TextBox("from", "", new { id = "from", type = "text" })
+                            Hasta: @Html.TextBox("to", "", new { id = "to", type = "text" })
+                            <input type="submit" value="Enviar" />
+                        </form>
+                    </div>
+                    <br/>
+                    <br/>
+                    <div class="bs-example">
+                        <ul class="nav nav-tabs" style="margin-bottom: 15px;">
+                            <li class="active"><a href="#home" data-toggle="tab">Atención</a></li>                            
+                            <li ><a href="#resolvio" data-toggle="tab">Resolvio</a></li>
+                            <li ><a href="#calif" data-toggle="tab">Calificación</a></li>
+                            <li><a href="#cordialidad" data-toggle="tab">Cordialidad</a></li>    
+                                       
+                        </ul>
+                        <div id="myTabContent" class="tab-content">
+                            <div class="tab-pane fade active in" id="home">                                   
+                                @if (@TempData["g"] != null)
+                                {
+                                    <div id="barr" style="min-width: 500px; height: 500px; max-width: 800px; margin: 0 auto"></div>  
+                                }                                                                                           
+                             </div>                                                      
+                            <div class="tab-pane fade" id="resolvio">     
+                                @if (@TempData["h"] != null)
+                                {
+                                    <div id="barr1" style="min-width: 500px; height: 500px; max-width: 800px; margin: 0 auto"></div> 
+                                }                                                                                                
+                            </div>                           
+                            <div class="tab-pane fade" id="calif"> 
+                                @if (@TempData["j"] != null)
+                                {
+                                    <div id="barr3" style="min-width: 500px; height: 500px; max-width: 800px; margin: 0 auto"></div> 
+                                }                                                               
+                                <br/>
+                                <div id="showData" align=center ></div>
+                            </div>                           
+                            <div class="tab-pane fade" id="cordialidad">                                                                
+                                @if (@TempData["i"] != null)
+                                {
+                                    <div id="barr2" style="min-width: 500px; height: 500px; max-width: 800px; margin: 0 auto"></div>
+                                }                                       
+                            </div>                           
+                        </div>
+                    </div>
+                </div>                
+            </div>                  
+        </div>
+    </div>
+    <script>
+        var a = @Html.Raw(Json.Encode(@TempData["g"]))
+        Highcharts.chart('barr', {
+            chart: {
+                type: 'bar'
+            },
+            title: {
+                text: 'Atención'
+            } ,          
+            xAxis: {
+                categories: ['Adecuada', 'Rápida', 'Lenta'],
+                title: {
+                    text: null
+                }
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'Total',
+                    align: 'high'
+                },
+                labels: {
+                    overflow: 'justify'
+                }
+            },
+            plotOptions: {
+                bar: {
+                    dataLabels: {
+                        enabled: true
+                    }
+                }
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'top',
+                x: 0,
+                y: 24,
+                floating: false,
+                borderWidth: 1,
+                backgroundColor: ((Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'),
+                shadow: true
+            },
+            credits: {
+                enabled: false
+            },
+            series: a
+        });
+    </script>
+    <script>
+        var a = @Html.Raw(Json.Encode(@TempData["h"]))
+        Highcharts.chart('barr1', {
+            chart: {
+                type: 'bar'
+            },
+            title: {
+                text: 'Resolvio'
+            } ,
+            xAxis: {
+                categories: ['Si', 'Parcialmente', 'No'],
+                title: {
+                    text: null
+                }
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'Total',
+                    align: 'high'
+                },
+                labels: {
+                    overflow: 'justify'
+                }
+            },
+            plotOptions: {
+                bar: {
+                    dataLabels: {
+                        enabled: true
+                    }
+                }
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'top',
+                x: 0,
+                y: 24,
+                floating: false,
+                borderWidth: 1,
+                backgroundColor: ((Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'),
+                shadow: true
+            },
+            credits: {
+                enabled: false
+            },
+            series: a
+        });
+    </script>
+    <script>
+        var a = @Html.Raw(Json.Encode(@TempData["j"]))
+        Highcharts.chart('barr3', {
+            chart: {
+                type: 'bar'
+            },
+            title: {
+                text: 'Calificación'
+            } ,
+            xAxis: {
+                categories: ['Promedio General'],
+                title: {
+                    text: null
+                },
+                labels:{
+                    rotation: -90
+                }
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'Total',
+                    align: 'high'
+                },
+                labels: {
+                    overflow: 'justify'
+                }
+            },
+            plotOptions: {
+                bar: {
+                    dataLabels: {
+                        enabled: true
+                    }
+                }
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'top',
+                x: 0,
+                y: 24,
+                floating: false,
+                borderWidth: 1,
+                backgroundColor: ((Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'),
+                shadow: true
+            },
+            credits: {
+                enabled: false
+            },
+            series: a
+        });
+    </script>
+    <script>
+        var a = @Html.Raw(Json.Encode(@TempData["i"]))
+        Highcharts.chart('barr2', {
+            chart: {
+                type: 'bar'
+            },
+            title: {
+                text: 'Cordialidad'
+            } ,
+            xAxis: {
+                categories: ['Si', 'No'],
+                title: {
+                    text: null
+                }
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'Total',
+                    align: 'high'
+                },
+                labels: {
+                    overflow: 'justify'
+                }
+            },
+            plotOptions: {
+                bar: {
+                    dataLabels: {
+                        enabled: true
+                    }
+                }
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'top',
+                x: 0,
+                y: 24,
+                floating: false,
+                borderWidth: 1,
+                backgroundColor: ((Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'),
+                shadow: true
+            },
+            credits: {
+                enabled: false
+            },
+            series: a
+        });
+    </script>    
+    <script>
+    var _table_ = document.createElement('table'),
+    _tr_ = document.createElement('tr'),
+    _th_ = document.createElement('th'),
+    _td_ = document.createElement('td');
+
+        var a = @Html.Raw(Json.Encode(@TempData["k"]))
+
+        // Builds the HTML Table out of myList json data from Ivy restful service.
+        function buildHtmlTable(arr) {
+            var table = _table_.cloneNode(false),
+                columns = addAllColumnHeaders(arr, table);
+            for (var i = 0, maxi = arr.length; i < maxi; ++i) {
+                var tr = _tr_.cloneNode(false);
+                for (var j = 0, maxj = columns.length; j < maxj ; ++j) {
+                    var td = _td_.cloneNode(false);
+                    cellValue = arr[i][columns[j]];
+                    td.appendChild(document.createTextNode(arr[i][columns[j]] || ''));
+                    tr.appendChild(td);
+                }
+                table.appendChild(tr);
+            }
+            return table;
+        }
+
+        // Adds a header row to the table and returns the set of columns.
+        // Need to do union of keys from all records as some records may not contain
+        // all records
+        function addAllColumnHeaders(arr, table) {
+            var columnSet = [],
+                tr = _tr_.cloneNode(false);
+            for (var i = 0, l = arr.length; i < l; i++) {
+                for (var key in arr[i]) {
+                    if (arr[i].hasOwnProperty(key) && columnSet.indexOf(key) === -1) {
+                        columnSet.push(key);
+                        var th = _th_.cloneNode(false);
+                        th.appendChild(document.createTextNode(key));
+                        tr.appendChild(th);
+                    }
+                }
+            }
+            table.appendChild(tr);
+            return columnSet;
+        }
+
+
+        var divContainer = document.getElementById("showData");
+        divContainer.innerHTML = "";
+        divContainer.appendChild(buildHtmlTable(a));
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+d:\users\jabrego.ss\documents\visual studio 2013\Projects\Indicadores\Indicadores\bin\Indicadores.dll.config
+d:\users\jabrego.ss\documents\visual studio 2013\Projects\Indicadores\Indicadores\bin\Indicadores.dll
+d:\users\jabrego.ss\documents\visual studio 2013\Projects\Indicadores\Indicadores\bin\Indicadores.pdb
+d:\users\jabrego.ss\documents\visual studio 2013\Projects\Indicadores\Indicadores\bin\Newtonsoft.Json.dll
+d:\users\jabrego.ss\documents\visual studio 2013\Projects\Indicadores\Indicadores\bin\System.Web.Helpers.dll
+d:\users\jabrego.ss\documents\visual studio 2013\Projects\Indicadores\Indicadores\bin\System.Web.Mvc.dll
+d:\users\jabrego.ss\documents\visual studio 2013\Projects\Indicadores\Indicadores\bin\System.Web.Razor.dll
+d:\users\jabrego.ss\documents\visual studio 2013\Projects\Indicadores\Indicadores\bin\System.Web.Webpages.Deployment.dll
+d:\users\jabrego.ss\documents\visual studio 2013\Projects\Indicadores\Indicadores\bin\System.Web.Webpages.dll
+d:\users\jabrego.ss\documents\visual studio 2013\Projects\Indicadores\Indicadores\bin\System.Web.Webpages.Razor.dll
+d:\users\jabrego.ss\documents\visual studio 2013\Projects\Indicadores\Indicadores\bin\System.Web.Razor.xml
+d:\users\jabrego.ss\documents\visual studio 2013\Projects\Indicadores\Indicadores\bin\System.Web.Webpages.xml
+d:\users\jabrego.ss\documents\visual studio 2013\Projects\Indicadores\Indicadores\bin\System.Web.Webpages.Deployment.xml
+d:\users\jabrego.ss\documents\visual studio 2013\Projects\Indicadores\Indicadores\bin\System.Web.Webpages.Razor.xml
+d:\users\jabrego.ss\documents\visual studio 2013\Projects\Indicadores\Indicadores\bin\System.Web.Helpers.xml
+d:\users\jabrego.ss\documents\visual studio 2013\Projects\Indicadores\Indicadores\bin\System.Web.Mvc.xml
+d:\users\jabrego.ss\documents\visual studio 2013\Projects\Indicadores\Indicadores\obj\Debug\Indicadores.dll
+d:\users\jabrego.ss\documents\visual studio 2013\Projects\Indicadores\Indicadores\obj\Debug\Indicadores.pdb
+d:\users\jabrego.ss\documents\visual studio 2013\Projects\Indicadores\Indicadores\obj\Debug\Indicadores.csprojResolveAssemblyReference.cache
+\\edelacruz-pc\SS\ASP\Nueva carpeta\Indicadores\Indicadores\bin\Indicadores.dll.config
+\\edelacruz-pc\SS\ASP\Nueva carpeta\Indicadores\Indicadores\bin\Indicadores.dll
+\\edelacruz-pc\SS\ASP\Nueva carpeta\Indicadores\Indicadores\bin\Indicadores.pdb
+\\edelacruz-pc\SS\ASP\Nueva carpeta\Indicadores\Indicadores\bin\Newtonsoft.Json.dll
+\\edelacruz-pc\SS\ASP\Nueva carpeta\Indicadores\Indicadores\bin\System.Web.Helpers.dll
+\\edelacruz-pc\SS\ASP\Nueva carpeta\Indicadores\Indicadores\bin\System.Web.Mvc.dll
+\\edelacruz-pc\SS\ASP\Nueva carpeta\Indicadores\Indicadores\bin\System.Web.Razor.dll
+\\edelacruz-pc\SS\ASP\Nueva carpeta\Indicadores\Indicadores\bin\System.Web.Webpages.Deployment.dll
+\\edelacruz-pc\SS\ASP\Nueva carpeta\Indicadores\Indicadores\bin\System.Web.Webpages.dll
+\\edelacruz-pc\SS\ASP\Nueva carpeta\Indicadores\Indicadores\bin\System.Web.Webpages.Razor.dll
+\\edelacruz-pc\SS\ASP\Nueva carpeta\Indicadores\Indicadores\bin\System.Web.Razor.xml
+\\edelacruz-pc\SS\ASP\Nueva carpeta\Indicadores\Indicadores\bin\System.Web.Webpages.xml
+\\edelacruz-pc\SS\ASP\Nueva carpeta\Indicadores\Indicadores\bin\System.Web.Webpages.Deployment.xml
+\\edelacruz-pc\SS\ASP\Nueva carpeta\Indicadores\Indicadores\bin\System.Web.Webpages.Razor.xml
+\\edelacruz-pc\SS\ASP\Nueva carpeta\Indicadores\Indicadores\bin\System.Web.Helpers.xml
+\\edelacruz-pc\SS\ASP\Nueva carpeta\Indicadores\Indicadores\bin\System.Web.Mvc.xml
+\\edelacruz-pc\SS\ASP\Nueva carpeta\Indicadores\Indicadores\obj\Debug\Indicadores.csprojResolveAssemblyReference.cache
+\\edelacruz-pc\SS\ASP\Nueva carpeta\Indicadores\Indicadores\obj\Debug\Indicadores.dll
+\\edelacruz-pc\SS\ASP\Nueva carpeta\Indicadores\Indicadores\obj\Debug\Indicadores.pdb
+D:\Users\JABREGO.SS\Desktop\Indicadores\Indicadores\bin\Indicadores.dll.config
+D:\Users\JABREGO.SS\Desktop\Indicadores\Indicadores\bin\Indicadores.dll
+D:\Users\JABREGO.SS\Desktop\Indicadores\Indicadores\bin\Indicadores.pdb
+D:\Users\JABREGO.SS\Desktop\Indicadores\Indicadores\bin\Newtonsoft.Json.dll
+D:\Users\JABREGO.SS\Desktop\Indicadores\Indicadores\bin\System.Web.Helpers.dll
+D:\Users\JABREGO.SS\Desktop\Indicadores\Indicadores\bin\System.Web.Mvc.dll
+D:\Users\JABREGO.SS\Desktop\Indicadores\Indicadores\bin\System.Web.Razor.dll
+D:\Users\JABREGO.SS\Desktop\Indicadores\Indicadores\bin\System.Web.Webpages.Deployment.dll
+D:\Users\JABREGO.SS\Desktop\Indicadores\Indicadores\bin\System.Web.Webpages.dll
+D:\Users\JABREGO.SS\Desktop\Indicadores\Indicadores\bin\System.Web.Webpages.Razor.dll
+D:\Users\JABREGO.SS\Desktop\Indicadores\Indicadores\bin\System.Web.Razor.xml
+D:\Users\JABREGO.SS\Desktop\Indicadores\Indicadores\bin\System.Web.Webpages.xml
+D:\Users\JABREGO.SS\Desktop\Indicadores\Indicadores\bin\System.Web.Webpages.Deployment.xml
+D:\Users\JABREGO.SS\Desktop\Indicadores\Indicadores\bin\System.Web.Webpages.Razor.xml
+D:\Users\JABREGO.SS\Desktop\Indicadores\Indicadores\bin\System.Web.Helpers.xml
+D:\Users\JABREGO.SS\Desktop\Indicadores\Indicadores\bin\System.Web.Mvc.xml
+D:\Users\JABREGO.SS\Desktop\Indicadores\Indicadores\obj\Debug\Indicadores.dll
+D:\Users\JABREGO.SS\Desktop\Indicadores\Indicadores\obj\Debug\Indicadores.pdb
+D:\Users\JABREGO.SS\Desktop\Indicadores\Indicadores\obj\Debug\Indicadores.csprojResolveAssemblyReference.cache
