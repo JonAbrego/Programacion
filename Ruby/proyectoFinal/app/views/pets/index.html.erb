@@ -1,0 +1,82 @@
+      <nav class="navbar navbar-dark navbar-fixed-top bg-inverse">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div clas="container">
+          <a class="navbar-brand" href="">
+            <i class="fa fa-paw fa-4"></i>
+            <div class="content-hidden">Mascotas</div>
+          </a>
+          <ul class="nav navbar-nav collapsed pull-xs-right">
+            <li class="nav-item active">
+              <%= link_to root_path, :class => 'nav-link' do%>
+                <%= fa_icon "home" %> <div class="content-hidden">Inicio</div>
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to search_pet_path(kms: 5), :class => 'nav-link' do%>
+                <%= fa_icon "search"%> <div class="content-hidden">Buscar</div>
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to new_user_session_path, :class => 'nav-link' do%>
+                <%= fa_icon "sign-in" %> <div class="content-hidden">Ingresa</div>
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to new_user_registration_path, class:"nav-link" do %>
+                <%= fa_icon "pencil-square-o" %> <div class="content-hidden">Registrate</div>
+              <% end %>
+            </li>
+          </ul>
+        </div><!-- bs-example-navbar-collapse-1 -->
+      </nav>
+
+      <div id="wrapper">
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+          <div class="container">
+            <nav style="margin-top:-15px">
+              <ul class="pager">
+                <li><%= link_to 'Nueva Mascota »', new_pet_path %></li>
+              </ul>
+            </nav>
+            <div class="jumbotron">
+              <h1 class="display-3">¿Quieres un amigo nuevo?</h1>
+              <p class="lead">En esta página podras encontrar a tu amigo perfecto, no discriminamos los gustos o preferencias de nuestros usuarios, así que ¿qué esperas?, busca un amigo o ecuentra un nuevo hogar para una mascota que tengas.</p>
+              <p>
+                <%= link_to search_pet_path(kms: 5), :class => 'nav-link btn btn-lg btn-success' do%>
+                  <%= fa_icon "search"%> Buscar
+                <% end %>
+                <%= link_to new_pet_path, :class => 'nav-link btn btn-lg btn-success' do%>
+                  <%= fa_icon "pencil-square"%> Publicar
+                <% end %>
+              </p>
+            </div>
+
+            <div class="alert alert-success" role="alert" hidden>
+              <%= notice %>
+            </div>
+
+            <div class="row">
+              <% @pets.each do |pet| %>
+                <div class="col-sm-6 col-md-4" style="margin-top:20px;">
+                  <hr class="post"/>
+                  <div class="card-image">
+                    <center> <%=image_tag pet.imagen.thumb.url, class: "card-img-top" %> </center>
+                  </div>
+                  <div class="card-block">
+                    <h4 class="card-title"><%= pet.name %></h4>
+                    <p><%= pet.specie %>: <%= pet.race %></p>
+                    <p class="card-text message"><%= pet.description %></p>
+                    <%= link_to 'Ver publicación »', pet, class:"btn btn-primary" %>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+
+            <center>
+              <%= paginate(@pets) %>
+            </center>
+
+          </div>
+        </div><!-- /#page-content-wrapper -->
+      </div><!-- /#wrapper -->

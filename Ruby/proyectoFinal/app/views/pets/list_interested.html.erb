@@ -1,0 +1,138 @@
+      <nav class="navbar navbar-dark navbar-fixed-top bg-inverse">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div clas="container">
+          <a class="navbar-brand" href="">
+            <i class="fa fa-paw fa-4"></i>
+            <div class="content-hidden">Mascotas</div>
+          </a>
+          <ul class="nav navbar-nav collapsed pull-xs-right">
+            <li class="nav-item">
+              <%= link_to user_path, :class => 'nav-link' do%>
+                <%= fa_icon "home"%> <div class="content-hidden">Inicio</div>
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to search_pet_path(kms: 5), :class => 'nav-link' do%>
+                <%= fa_icon "search"%> <div class="content-hidden">Buscar</div>
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to my_pets_pet_path, :class => 'nav-link' do%>
+                <%= fa_icon "list"%> <div class="content-hidden">Mis Publicaciones</div>
+              <% end %>
+            </li>
+            <li class="nav-item ">
+              <%= link_to new_pet_path, class:"nav-link" do %>
+                <%= fa_icon "pencil-square" %> <div class="content-hidden">Publicar</div>
+              <% end %>
+            </li>
+            <li class="nav-item ">
+              <%= link_to edit_user_path, class:"nav-link" do %>
+                <%= fa_icon "pencil" %> <div class="content-hidden">Editar Cuenta</div>
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to destroy_user_session_path, method: 'delete', class:"nav-link" do %>
+                <%= fa_icon "sign-out" %> <div class="content-hidden">Salir</div>
+              <% end %>
+            </li>
+          </ul>
+        </div><!-- bs-example-navbar-collapse-1 -->
+      </nav>
+
+      <div id="wrapper">
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+          <div class="container">
+            <br/>
+            <nav>
+              <ul class="pager">
+                <li><%= link_to '« Regresar', pet_path(@pet) %></li>
+              </ul>
+            </nav>
+
+            <div class="row">
+
+            <br/>
+            <br/>
+            <h4 class="omb_authTitle" style="text-align:center">Interesados</h4>
+
+            <% if @pet.followers_count > 0 %>
+            <div class="row">
+              <center>                
+                <table style="width:100%">
+                   <tr>
+                    <th>Nombre Competo</th>
+                    <th>Correo</th>
+                    <th>Telefono</th>
+                    <th>Dirección</th>
+                    <th>Solicitud</th>
+                    <th>Seleccionar</th>
+                  </tr>                                                                        
+                <% @pet.followers.each do |f| %>
+                  <tr>
+                    <td> <%= f.given_name %> <%= f.first_surname %> <%= f.second_surname %></td>
+                    <td> <%= f.email %> </td> 
+                    <td> <%= f.phone_number%> </td>
+                    <td> <%= link_to 'Ver mapa', distance_path(id: f.id), class: 'dist' %> </td> 
+                    <% if Solicitud.where(id_pet: @pet.id,id: f.id ) == [] %>
+                    <td>
+                      No hay solicitud
+                    </td>
+                    <td>
+                      <%= link_to 'Nuevo dueño', new_owner_pet_path(id: @pet, no: f.id), class:"btn btn-secondary disabled" %>
+                    </td>
+                    <% else %>                        
+                    <td>
+                      <%= link_to 'Ya tiene solicitud', solicitud_path(id: f.id) %>
+                    </td>
+                    <td>
+                      <%= link_to 'Nuevo dueño', new_owner_pet_path(id: @pet, no: f.id), class:"btn btn-primary" %>
+                    </td>
+                    <% end %>                                        
+                  </tr>
+                <% end %>
+                </table>
+              </center>
+            </div>
+            <div class="row">
+              <div class="col-sm-offset-1 col-sm-10">
+                <div id="map" style="margin-top: 20px; width:100%; height:450px;"></div>
+              </div>
+            </div>
+            <% else %>
+            No se encontraron seguidores
+            <% end %>
+          </div>
+        </div>
+      </div><!-- /#wrapper -->
+
+      <script src="//maps.google.com/maps/api/js?v=3.23&sensor=false&client=&key=&libraries=geometry&language=&hl=®ion="></script>
+      <script src="//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js"></script>
+      <script src="//cdn.rawgit.com/printercu/google-maps-utility-library-v3-read-only/master/infobox/src/infobox_packed.js"></script>
+
+      <script>
+      handler = Gmaps.build('Google');
+      handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+        markers = handler.addMarkers(<%=raw @hash.to_json %>);
+        handler.bounds.extendWith(markers);
+        handler.fitMapToBounds();
+      });
+      $('.dist').click(function(e) {
+        urls = $(this).attr('href');
+        $.ajax({
+          url: urls,
+          type: "POST",
+          success: function(data){
+            console.log(data);
+            handler = Gmaps.build('Google');
+            handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+              markers = handler.addMarkers(data);
+              handler.bounds.extendWith(markers);
+              handler.fitMapToBounds();
+            });
+          }
+        });
+        e.preventDefault();
+      });
+      </script>

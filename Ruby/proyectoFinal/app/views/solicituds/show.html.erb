@@ -1,0 +1,147 @@
+      <nav class="navbar navbar-dark navbar-fixed-top bg-inverse">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div clas="container">
+          <a class="navbar-brand" href="">
+            <i class="fa fa-paw fa-4"></i>
+            <div class="content-hidden">Mascotas</div>
+          </a>
+          <ul class="nav navbar-nav collapsed pull-xs-right">
+            <li class="nav-item">
+              <%= link_to user_path, :class => 'nav-link' do%>
+                <%= fa_icon "home"%> <div class="content-hidden">Inicio</div>
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to search_pet_path(kms: 5), :class => 'nav-link' do%>
+                <%= fa_icon "search"%> <div class="content-hidden">Buscar</div>
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to my_pets_pet_path, :class => 'nav-link' do%>
+                <%= fa_icon "list"%> <div class="content-hidden">Mis Publicaciones</div>
+              <% end %>
+            </li>
+            <li class="nav-item ">
+              <%= link_to new_pet_path, class:"nav-link" do %>
+                <%= fa_icon "pencil-square" %> <div class="content-hidden">Publicar</div>
+              <% end %>
+            </li>
+            <li class="nav-item ">
+              <%= link_to edit_user_path, class:"nav-link" do %>
+                <%= fa_icon "pencil" %> <div class="content-hidden">Editar Cuenta</div>
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to destroy_user_session_path, method: 'delete', class:"nav-link" do %>
+                <%= fa_icon "sign-out" %> <div class="content-hidden">Salir</div>
+              <% end %>
+            </li>
+          </ul>
+        </div><!-- bs-example-navbar-collapse-1 -->
+      </nav>
+
+      <br/>
+      <br/>
+      <nav>
+        <ul class="pager">
+          <li><%= link_to '« Inicio', user_path %></li>
+        </ul>
+      </nav>
+
+      <div id="wrapper">
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+          <div class="sol">
+            <center>
+            <table>
+            <div class='solicitud'>            
+                <tr>
+                  <td class='sol'><center>Nombre:</center></td>
+                  <td class='sol'><%= @solicitud.nombre %></td>
+                </tr>                              
+            </div>
+            <div class='solicitud'>            
+                <tr>
+                  <td class='sol'><center>Ocupacion:</center></td>
+                  <td class='sol'><%= @solicitud.ocupacion %></td>
+                </tr>                              
+            </div>
+            <div class='solicitud'>              
+                <tr>
+                  <td class='sol'><center>Edad:</center></td>
+                  <td class='sol'><%= @solicitud.edad %></td>
+                </tr>                              
+            </div>
+            <div class='solicitud'>              
+                <tr>
+                  <td class='sol'><center>Por que quiero una mascota :</center></td>
+                  <td class='sol'><%= @solicitud.por_que %></td>
+                </tr>                                                                                            
+            </div>
+            <div class='solicitud'>              
+                <tr>
+                  <td class='sol'><center>Como considero a mi mascota:</center></td>
+                  <td class='sol'>  <%= @solicitud.consideras %></td>
+                </tr>                              
+            </div>
+            <div class='solicitud'>              
+                <tr>
+                  <td class='sol'><center>Experiencia cuidando mascotas:</center></td>
+                  <td class='sol'><%if @solicitud.experiencia ==false%>
+                No
+              <%else%>
+              Si
+              <%end%></td>
+                </tr>
+            </div>
+            <div class='solicitud'>              
+                <tr>
+                  <td class='sol'><center>Actividades que realizaria con mi mascota:</center></td>
+                  <td class='sol'><%= @solicitud.actividades %></td>
+                </tr> 
+            </div>
+            <div class='solicitud'>
+                <tr>
+                  <td class='sol'><center>Conosco los gastos economicos:</center></td>
+                  <td class='sol'><%if @solicitud.gastos ==false%>
+                        No
+                        <%else%>
+                        Si
+                        <%end%>
+                  </td>
+                </tr>                
+            </div>
+            <div class='solicitud'>
+                <tr>
+                  <td class='sol'><center>Vivo en :</center></td>
+                  <td class='sol'><%= @solicitud.vivienda %></td>
+                </tr>                                                                                      
+            </div>
+            <div class='solicitud'>              
+                <tr>
+                  <td class='sol'><center>La mascota dormiria en :</center></td>
+                  <td class='sol'><%= @solicitud.dormir %></td>
+                </tr>                
+            </div>
+            <div class='solicitud'>              
+                <tr>
+                  <td class='sol'><center>Si me mudara mi mascota :</center></td>
+                  <td class='sol'><%= @solicitud.mudarse %></td>
+                </tr>                
+            </div>
+            <div class='solicitud'>              
+                <tr>
+                  <td class='sol'><center>Estoy dispuesto a que la mascota se adapte a su nuevo entorno :</center></td>
+                  <td class='sol'><%if @solicitud.ajuste==false%>
+                        No
+                      <%else%>
+                        Si
+                      <%end%>
+                  </td>
+                </tr>                              
+            </div>
+            </table>                                                        
+            </center>
+          </div>
+        </div><!-- /#page-content-wrapper -->
+      </div><!-- /#wrapper -->

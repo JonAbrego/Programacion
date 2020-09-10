@@ -1,0 +1,19 @@
+== Applicacion web de adopción de mascotas
+
+Página: https://sheltered-inlet-62710.herokuapp.com/
+
+Things you may want to cover:
+
+* Ruby 2.3, rails 4.2
+
+* Configuration check database.yml
+
+* Database creation run rake db:setup
+
+* Database initialization rake db:migrate or rake db:reset for restore from schema with seeds
+
+* Check Gemfile to know what to use
+
+
+Please feel free to use a different markup language if you do not plan to run
+<tt>rake doc:app</tt>.
