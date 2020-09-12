@@ -1,4 +1,14 @@
 def merge(a, b):
+	"""
+	Dado dos arreglos de numeros enteros ordenados A y B 
+	devolver un arreglo C con los elemento de A y B ordenados, 
+	sin emplear algun algoritmo de ordenamiento
+
+	   Parametros:
+	   a -- un arreglo de numeros enteros ordenados 
+	   b -- un arreglo de numeros enteros ordenados
+
+	"""
 	c = []
 	arreglo1 = 0
 	arreglo2 = 0
